@@ -6,6 +6,7 @@ const server = http.createServer(function (req, res) {
   // Set the response header
   // 200 → status code for success
   // 'Content-Type' tells the browser what kind of data it's receiving (HTML in this case)
+  // If we skip this line by default contentType is Text/plain and status is 200
   res.writeHead(200, { "Content-Type": "text/html" });
 
   // Send part of the response body (will appear in browser)
