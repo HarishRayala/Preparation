@@ -32,3 +32,9 @@ server.listen(8080); // Start the server and listen on port 8080
 // 🔗 Now, open your browser and go to: http://localhost:8080
 
 // ✅ You’ll see: My World!Hello World!
+
+const sum = (a, b) => a + b;
+const sub = (a, b) => a - b;
+const mul = (a, b) => a * b;
+
+module.exports = { sum, sub, mul };
