@@ -8,9 +8,9 @@ const server = http.createServer(async (req, res) => {
       .get("https://fakestoreapi.com/products")
       .then((res) => res.data);
 
-    const productsMapping = `<div style="display:flex;flex-wrap:wrap;gap:20px">${data
+    const productsMapping = `<div style="display:flex;flex-wrap:wrap;gap:20px;justify-content:center;">${data
       .map((el, id) => {
-        return `<div style="text-align:center;width:150px;border:0.5px solid black;border-radius:5px" >
+        return `<div style="text-align:center;width:150px;border:0.5px solid black;border-radius:5px;padding:8px" >
                 <div><img src=${el.image} alt="image" style="width:100px;height:100px"/></div>
                 <diV>${el.title}</div>
                 <div>${el.price}</div>
@@ -20,10 +20,26 @@ const server = http.createServer(async (req, res) => {
 
     if (req.url === "/") {
       res.write(
-        `<div><h1 style="text-align:center">Welcome to Home Page</h1></div>`
+        `<div>
+          <h1 style="text-align:center">Welcome to Home Page</h1>
+          </div>
+          <div style="text-align:center">
+            <a style="text-decoration:none;background:blue;color:white;padding:8px;border-radius:5px" href="/products">
+            Products Page
+            </a>
+          </div>
+        `
       );
     } else if (req.url === "/products") {
-      res.write(`<div>${productsMapping}</div>`);
+      res.write(`
+        <div style="text-align:center">
+          <a style="text-decoration:none;background:blue;color:white;padding:8px;border-radius:5px" href="/">
+            Back to Home Page
+            </a>
+          </div>
+          <div style="margin-Top:20px">
+        ${productsMapping}
+        </div>`);
     }
 
     res.end(`
@@ -32,7 +48,7 @@ const server = http.createServer(async (req, res) => {
         <head>
             <meta charset="UTF-8">
             <meta name="viewport" content="width=device-width, initial-scale=1.0">
-            <title>Document</title>
+            <title>API Call</title>
         </head>
         <body>
             
